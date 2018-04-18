@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Racon_Xamarin_New.Views.NewsPage" BackgroundColor="#F0EDED"
+             xmlns:scroll="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+  <StackLayout Padding="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+    <Label IsVisible="False" x:Name="NoData" Text="No News Found"></Label>
+    <ListView x:Name="NewsList"
+             CachingStrategy="RecycleElement"
+              ItemsSource="{Binding Items}"
+              IsPullToRefreshEnabled="true"
+              HasUnevenRows="true"
+              ItemTapped="ListView_OnItemTapped"
+              Refreshing="list_refreshing"
+              BackgroundColor="Transparent"
+              
+              
+              View.VerticalOptions="FillAndExpand"
+              SeparatorColor="Transparent"
+              View.HorizontalOptions="FillAndExpand">
+            <ListView.Behaviors>
+                <scroll:InfiniteScrollBehavior/>
+            </ListView.Behaviors>
+            <ListView.ItemTemplate >
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout Padding="5">
+              <Frame HasShadow="True" Padding="5" OutlineColor="White" BackgroundColor="White" >
+                <Grid ColumnSpacing="10">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                  </Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                  </Grid.RowDefinitions>
+
+                                    <ffimageloading:CachedImage LoadingPlaceholder="placeholder.png" Source="{Binding ImageUrl}" Aspect="Fill" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="0" Grid.Column="0" HeightRequest="100" WidthRequest="100">
+                                    </ffimageloading:CachedImage>
+
+                                    <!--<Image Source="{Binding ImageUrl}" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="0" Grid.Column="0" HeightRequest="100" WidthRequest="100">                    
+                  </Image>-->
+                  <StackLayout  Spacing="5" Grid.Row="0" Grid.Column="1">
+                    <Label Text="{Binding Title}" FontFamily="Kokila Bold" FontSize="20" StyleId="Kokila Bold" TextColor="#373435" FontAttributes="Bold" HorizontalOptions="Start"></Label>
+                    <Label Text="{Binding Description}" LineBreakMode="TailTruncation"  FontSize="15" FontFamily="Kokila Bold"  StyleId="Kokila Bold" TextColor="#727376" HorizontalOptions="Start"></Label>
+                  </StackLayout>
+                </Grid>
+              </Frame>
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+
+            <ListView.Footer>
+                <Grid Padding="4" IsVisible="{Binding IsLoadingMore}">
+                    <!-- set the footer to have a zero height when invisible -->
+                    <Grid.Triggers>
+                        <Trigger TargetType="Grid" Property="IsVisible" Value="False">
+                            <Setter Property="HeightRequest" Value="0" />
+                        </Trigger>
+                    </Grid.Triggers>
+                    <!-- the loading content -->
+                    <ActivityIndicator
+                              IsRunning="true"
+                              Color="#fcbf49"
+                              WidthRequest="20"
+                              HeightRequest="20"/>
+
+                </Grid>
+            </ListView.Footer>
+        </ListView>
+  </StackLayout>
+    </ContentPage>

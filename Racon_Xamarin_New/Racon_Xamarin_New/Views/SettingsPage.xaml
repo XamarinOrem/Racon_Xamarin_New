@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Racon_Xamarin_New.SettingsPage" BackgroundColor="White">
+  <ScrollView>
+  <StackLayout  Padding="10" Spacing="10">
+    <Grid ColumnSpacing="10">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+        <ColumnDefinition Width="45"></ColumnDefinition>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition></RowDefinition>
+      </Grid.RowDefinitions>
+      <Label x:Name="notificationLabel" Text="Notifications" TextColor="#373435" Grid.Row="0" Grid.Column="0" FontFamily="Kokila Bold"  StyleId="Kokila Bold" FontSize="20"></Label>
+      <Switch x:Name="notificationSwich" Toggled="notficationClicked" IsToggled="False" Grid.Row="0"   Grid.Column="1"></Switch>
+      <!--<Label Text="Reduce app data download" TextColor="#373435" Grid.Row="1" Grid.Column="0" FontFamily="Kokila Bold"  StyleId="Kokila Bold" FontSize="20"></Label>
+      <Switch Grid.Row="1" Grid.Column="1"></Switch>
+      <Label Text="Connect to Wi-Fi automatically" TextColor="#373435" Grid.Row="2" Grid.Column="0" FontFamily="Kokila Bold"  StyleId="Kokila Bold" FontSize="20"></Label>
+      <Switch Grid.Row="2" Grid.Column="1"></Switch>-->
+    </Grid>
+
+    <StackLayout Spacing="10">
+      <StackLayout Orientation="Horizontal">
+        <Label Text="Like Us On Facebook" TextColor="#395D96" FontFamily="Kokila Bold"  StyleId="Kokila Bold" FontSize="20"></Label>
+        <Image Source="ic_facebook.png" HeightRequest="20" WidthRequest="20"></Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="fb_Tapped">
+
+                        </TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+          
+                </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label Text="Follow Us On Twitter" FontFamily="Kokila Bold" TextColor="#53B1EC" StyleId="Kokila Bold" FontSize="20"></Label>
+        <Image Source="ic_twitter.png" HeightRequest="20" WidthRequest="20"></Image>
+
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="insta_Tapped">
+
+                        </TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+      <Label x:Name="LogoutLabel" Text="Log Out" FontFamily="Kokila Bold" TextColor="#543816" StyleId="Kokila Bold" FontSize="20">
+
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                
+                             Tapped="LogOut_Clicked"
+                                NumberOfTapsRequired="1" />
+
+                    </Label.GestureRecognizers>
+
+
+                </Label>
+    </StackLayout>
+            <StackLayout Spacing="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+    <Image HorizontalOptions="Center" VerticalOptions="Center" Source="ic_logo_settings.png" HeightRequest="70" WidthRequest="250"></Image>
+    <Label FontFamily="Kokila Bold"  StyleId="Kokila Bold" FontSize="20" TextColor="#848688" FontAttributes="Bold" Text="App Version 1.1 &#10; Made with Coffee Beans" HorizontalTextAlignment="Center"></Label>
+                <Label x:Name="emailTxt" FontFamily="Kokila Bold"  StyleId="Kokila Bold" FontSize="20" TextColor="#373435" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"  HorizontalTextAlignment="Center"></Label>
+                <Label x:Name="adrressTxt" FontFamily="Kokila Bold"  StyleId="Kokila Bold" FontSize="20" TextColor="#373435" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
+                <Label x:Name="phoneTxt" FontFamily="Kokila Bold"  StyleId="Kokila Bold" FontSize="20" TextColor="#373435" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
+    <Image HorizontalOptions="Center" VerticalOptions="Center" Source="ic_coffeer.png" HeightRequest="70" WidthRequest="250"></Image>
+
+           
+            </StackLayout>
+        </StackLayout>
+  </ScrollView>
+</ContentPage>

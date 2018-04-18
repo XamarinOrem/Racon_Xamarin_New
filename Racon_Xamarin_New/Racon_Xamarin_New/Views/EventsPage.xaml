@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Racon_Xamarin_New.Views.EventsPage" BackgroundColor="#F0EDED"
+              xmlns:scroll="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling">
+  <StackLayout Padding="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+    <Label IsVisible="False" x:Name="NoData" Text="No Events Found"></Label>
+
+    <ListView x:Name="EventsList"
+              CachingStrategy="RecycleElement"
+              ItemsSource="{Binding Items}"
+              IsPullToRefreshEnabled="true"
+              HasUnevenRows="true"
+              ItemTapped="ListView_OnItemTapped"
+              Refreshing="list_refreshing"
+              BackgroundColor="Transparent"
+               
+              ItemSelected="Item_Selected" 
+              View.VerticalOptions="FillAndExpand"
+              SeparatorColor="Transparent"
+              View.HorizontalOptions="FillAndExpand">
+
+            <ListView.Behaviors>
+                <scroll:InfiniteScrollBehavior/>
+            </ListView.Behaviors>
+            <ListView.ItemTemplate >
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout Padding="0,5,5,5">
+            <Frame HasShadow="True" Padding="0" OutlineColor="White" BackgroundColor="White" >
+              <Grid ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="10"></ColumnDefinition>
+                  <ColumnDefinition Width="Auto"></ColumnDefinition>
+                  <ColumnDefinition Width="10"></ColumnDefinition>
+                  <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <BoxView Margin="1,0,0,0" Grid.Row="0" HorizontalOptions="Start" Grid.Column="0" VerticalOptions="FillAndExpand" WidthRequest="4" BackgroundColor="{Binding Color}"></BoxView>
+                <StackLayout x:Name="dayMonthLayout" Grid.Row="0" Grid.Column="1" Spacing="4"  HorizontalOptions="Center" VerticalOptions="Center" Padding="5,10,5,5">
+                  <Label TextColor="#727376" Text="{Binding Day}" FontSize="20" FontFamily="Kokila Bold"  StyleId="Kokila Bold" HorizontalOptions="Center"></Label>
+                  <Label TextColor="#373435" Text="{Binding Date}" FontSize="30" FontFamily="Kokila Bold"  StyleId="Kokila Bold" HorizontalOptions="Center"></Label>
+                  <Label TextColor="#727376" Text="{Binding Year}" FontSize="20" FontFamily="Kokila Bold"  StyleId="Kokila Bold" HorizontalOptions="Center"></Label>
+                </StackLayout>
+                <StackLayout Grid.Column="2"  Grid.Row="0" Padding="0,12,0,12">
+                <BoxView HorizontalOptions="Center"  VerticalOptions="FillAndExpand" WidthRequest="0.5" BackgroundColor="#DCDCDC"></BoxView>
+                </StackLayout>
+                <StackLayout  Grid.Row="0" Grid.Column="3" Spacing="5" Padding="5,10,5,5">
+                  <Label TextColor="#373435" LineBreakMode="TailTruncation" FontAttributes="Bold" Text="{Binding Title}" FontSize="20" FontFamily="Kokila Bold"  StyleId="Kokila Bold" HorizontalOptions="Start"></Label>
+                                        <Label LineBreakMode="TailTruncation" TextColor="#373435" FontAttributes="Bold" Text="{Binding SubTitle}" FontSize="18" FontFamily="Kokila Bold"  StyleId="Kokila Bold" HorizontalOptions="Start"></Label>
+                                        <Label TextColor="#727376" FontAttributes="Bold" Text="{Binding Place}" FontSize="15" FontFamily="Kokila Bold"  StyleId="Kokila Bold" HorizontalOptions="Start"></Label>
+                </StackLayout>
+                  
+              </Grid>
+            </Frame>
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+
+            <ListView.Footer>
+                <Grid Padding="4" IsVisible="{Binding IsLoadingMore}">
+                    <!-- set the footer to have a zero height when invisible -->
+                    <Grid.Triggers>
+                        <Trigger TargetType="Grid" Property="IsVisible" Value="False">
+                            <Setter Property="HeightRequest" Value="0" />
+                        </Trigger>
+                    </Grid.Triggers>
+                    <!-- the loading content -->
+                    <ActivityIndicator
+                              IsRunning="true"
+                              Color="#fcbf49"
+                              WidthRequest="20"
+                              HeightRequest="20"/>
+
+                </Grid>
+            </ListView.Footer>
+        </ListView>
+  </StackLayout>
+</ContentPage>

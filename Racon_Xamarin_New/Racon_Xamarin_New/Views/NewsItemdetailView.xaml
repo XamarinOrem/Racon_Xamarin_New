@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Racon_Xamarin_New.Views.NewsItemdetailView"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+    <ContentPage.Content>
+        <StackLayout Padding="5">
+            
+                <Grid ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                      
+                    </Grid.RowDefinitions>
+                <ffimageloading:CachedImage LoadingPlaceholder="placeholder.png" x:Name="ImageNews" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="0" Grid.Column="0" HeightRequest="100" WidthRequest="100">
+                </ffimageloading:CachedImage>
+                <!--<Image x:Name="ImageNews" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="0" Grid.Column="0" HeightRequest="100" WidthRequest="100">
+                    </Image>-->
+                    <StackLayout  Spacing="5" Grid.Row="0" Grid.Column="1">
+                        <Label x:Name="NewsTitle" FontFamily="Kokila Bold" FontSize="20" StyleId="Kokila Bold" TextColor="#373435" FontAttributes="Bold" HorizontalOptions="Start"></Label>
+                       
+                    </StackLayout>
+
+                    
+                </Grid>
+                <Label x:Name="DescriptionTitle" FontSize="15" FontFamily="Kokila Bold"  StyleId="Kokila Bold" TextColor="#727376" HorizontalOptions="Start"></Label>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

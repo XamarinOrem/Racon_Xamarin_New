@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Racon_Xamarin_New.CustomControls;assembly=Racon_Xamarin_New"
+             x:Class="Racon_Xamarin_New.CustomControls.MainView"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:scroll="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling">
+
+    <StackLayout BackgroundColor="Transparent" x:Name="MainLayout">
+
+             <StackLayout IsClippedToBounds="true" x:Name="ListViewLayout">
+
+    <ListView x:Name="ProductsList"
+             CachingStrategy="RecycleElement"
+              ItemsSource="{Binding Items}"
+              IsPullToRefreshEnabled="true"
+              HasUnevenRows="true"
+              ItemTapped="ListView_OnItemTapped"
+              Refreshing="list_refreshing"
+            
+
+            BackgroundColor="Transparent"
+            
+            
+            View.VerticalOptions="FillAndExpand"
+            SeparatorColor="Transparent"
+            View.HorizontalOptions="FillAndExpand"
+            
+            
+            >
+        <ListView.Behaviors>
+            <scroll:InfiniteScrollBehavior/>
+        </ListView.Behaviors>
+
+        <ListView.ItemTemplate >
+      <DataTemplate>
+        <ViewCell>
+          <StackLayout BackgroundColor="White" Padding="5">
+            <Frame HasShadow="true" Padding="5" OutlineColor="Transparent" BackgroundColor="White" >
+              <Grid ColumnSpacing="5">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto"></ColumnDefinition>
+                  <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                                <ffimageloading:CachedImage LoadingPlaceholder="placeholder.png" Source="{Binding ImageUrl}" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="0" Grid.Column="0" HeightRequest="100" WidthRequest="100">
+                                </ffimageloading:CachedImage>
+                  
+                 <!--<Image Source="{Binding ImageUrl}" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="0" Grid.Column="0" HeightRequest="100" WidthRequest="100">
+                </Image>-->
+                <StackLayout  Spacing="5" Grid.Row="0" Grid.Column="1" Padding="10">
+                  <Label Text="{Binding Title}" FontFamily="Kokila Bold" FontSize="30" StyleId="Kokila Bold" TextColor="#727376" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                  <Label Text="{Binding Price}" FontFamily="Kokila Bold" FontSize="25" StyleId="Kokila Bold" TextColor="#373435" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                                    <Label Text="{Binding Description}" HorizontalTextAlignment="Center" FontSize="15" FontFamily="Kokila Bold"  StyleId="Kokila Bold" TextColor="#727376" HorizontalOptions="Center"></Label>
+                </StackLayout>
+              </Grid>
+            </Frame>
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+        <ListView.Footer>
+            <Grid Padding="4" IsVisible="{Binding IsLoadingMore}">
+                <!-- set the footer to have a zero height when invisible -->
+                <Grid.Triggers>
+                    <Trigger TargetType="Grid" Property="IsVisible" Value="False">
+                        <Setter Property="HeightRequest" Value="0" />
+                    </Trigger>
+                </Grid.Triggers>
+                <!-- the loading content -->
+                <ActivityIndicator
+                              IsRunning="true"
+                              Color="#fcbf49"
+                              WidthRequest="20"
+                              HeightRequest="20"/>
+
+            </Grid>
+        </ListView.Footer>
+
+    </ListView>
+        </StackLayout>
+        </StackLayout>
+</ContentPage>

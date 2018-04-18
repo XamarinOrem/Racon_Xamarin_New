@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Racon_Xamarin_New.Views.EventDetailPage">
+    <ContentPage.Content>
+        <StackLayout Padding="5">
+           
+                <Grid ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="10"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <BoxView x:Name="boxViewVertical" Grid.Row="0" HorizontalOptions="Start" Grid.Column="0" VerticalOptions="FillAndExpand" WidthRequest="4" ></BoxView>
+                    <StackLayout  Grid.Row="0" Grid.Column="1" Spacing="-6" HorizontalOptions="Center" VerticalOptions="Center" Padding="5,10,5,5">
+                    <Label TextColor="#727376" x:Name="DayText"  FontSize="20" FontFamily="Kokila Bold"  StyleId="Kokila Bold" HorizontalOptions="Center"></Label>
+                    <Label TextColor="#373435" x:Name="DateText"  FontSize="30" FontFamily="Kokila Bold"  StyleId="Kokila Bold" HorizontalOptions="Center"></Label>
+                    <Label TextColor="#727376" x:Name="YearText"  FontSize="20" FontFamily="Kokila Bold"  StyleId="Kokila Bold" HorizontalOptions="Center"></Label>
+                    </StackLayout>
+                    <StackLayout Grid.Column="2"  Grid.Row="0" Padding="0,12,0,12">
+                        <BoxView HorizontalOptions="Center"  VerticalOptions="FillAndExpand" WidthRequest="0.5" BackgroundColor="#DCDCDC"></BoxView>
+                    </StackLayout>
+                    <StackLayout  Grid.Row="0" Grid.Column="3" Spacing="5" Padding="5,10,5,5">
+                    <Label TextColor="#373435" FontAttributes="Bold" x:Name="TitleText"   FontSize="20" FontFamily="Kokila Bold"  StyleId="Kokila Bold" HorizontalOptions="Start"></Label>
+
+                    <Label TextColor="#727376" FontAttributes="Bold" x:Name="PlaceText"  FontSize="15" FontFamily="Kokila Bold"  StyleId="Kokila Bold" HorizontalOptions="Start"></Label>
+                  
+                    </StackLayout>
+
+                </Grid>
+
+            <Label TextColor="#373435" FontAttributes="Bold" x:Name="SubTitleText"  FontSize="18" FontFamily="Kokila Bold"  StyleId="Kokila Bold" HorizontalOptions="Start"></Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Racon_Xamarin_New.CustomControls;assembly=Racon_Xamarin_New"
+             x:Class="Racon_Xamarin_New.Views.HomePage"
+             xmlns:controls="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh">
+
+   <controls:PullToRefreshLayout
+          IsPullToRefreshEnabled="True"
+          RefreshCommand="{Binding RefreshCommand}"
+          IsRefreshing="{Binding IsBusy}"
+          RefreshColor="#fcbf49">
+
+        <ScrollView>
+    <StackLayout x:Name="mainLayout" Padding="15,15,15,5" Spacing="40">
+
+    <Grid  ColumnSpacing="0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition x:Name="weatherGridcolumZero" Width="50" ></ColumnDefinition>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+        <ColumnDefinition x:Name="weatherGridcolumlast" Width="50"></ColumnDefinition>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="80"></RowDefinition>
+      </Grid.RowDefinitions>
+                <StackLayout Spacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand" 
+                             Grid.Row="0" Grid.Column="0">
+                    <Image x:Name="settingImg" Source="ic_setting.png" VerticalOptions="Start" 
+             HorizontalOptions="Start" >
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer Tapped="Settings_Tapped">            
+          </TapGestureRecognizer>
+        </Image.GestureRecognizers>
+      </Image>
+                </StackLayout>
+                
+      <Image Source="ic_logo.png" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand"
+             Grid.Row="0" Grid.Column="1"></Image>
+
+                <StackLayout Spacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand" 
+                             Grid.Row="0" Grid.Column="2">
+                    <Image x:Name="imgWeather" HeightRequest="25" WidthRequest="25"  VerticalOptions="Start" 
+                           HorizontalOptions="FillAndExpand" ></Image>
+
+                    <StackLayout Orientation="Horizontal"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
+                                 Spacing="0">
+                     <Label Text="Ålesund" FontSize="12" TextColor="White" FontFamily="Kokila Bold" 
+                               StyleId="Kokila Bold"  VerticalOptions="Center" HorizontalOptions="Center" />
+
+                    </StackLayout>
+                   <StackLayout Orientation="Horizontal"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand" 
+                                Spacing="0">
+                        <Label x:Name="lblTempValue"   FontSize="12" TextColor="White" FontFamily="Kokila Bold" 
+                               StyleId="Kokila Bold"  VerticalOptions="Center" HorizontalOptions="Start"/>
+                        <Label x:Name="lblTemp" Text="&#186;"  FontSize="10" TextColor="White" FontFamily="Kokila Bold"
+                               StyleId="Kokila Bold"  VerticalOptions="Center" HorizontalOptions="Start"/>
+             
+                    </StackLayout>
+                    
+                    
+     </StackLayout>
+                    
+        
+    </Grid>
+
+       <StackLayout  Spacing="5">
+                    <StackLayout Margin="10,0,0,0" Orientation="Vertical" HorizontalOptions="CenterAndExpand"  Spacing="2" Padding="0">
+
+
+                        <Label  Text="WIFI Password"  FontSize="20"  HorizontalOptions="Center" VerticalOptions="Center" FontFamily="Kokila Bold"  StyleId="Kokila Bold" FontAttributes="Bold" TextColor="White">
+                        </Label>
+                        <Label  x:Name="passwordText" FontSize="20"  HorizontalOptions="Center" VerticalOptions="Start" FontFamily="Kokila Bold"  StyleId="Kokila Bold" FontAttributes="Bold" TextColor="White">
+                        </Label>
+
+
+                    </StackLayout>
+
+                    <Grid ColumnSpacing="10" HorizontalOptions="CenterAndExpand">
+                            <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                             <StackLayout Padding="1" HorizontalOptions="Center"  HeightRequest="120" Grid.Row="0" Grid.Column="0">
+                                <Image  x:Name="barCodeImage" Aspect="AspectFit" HeightRequest="120" WidthRequest="120"></Image>
+                            </StackLayout>
+
+                            <StackLayout  Grid.Row="0" Grid.Column="1" Spacing="5" Padding="0">
+                                <StackLayout  Orientation="Horizontal" Spacing="0">
+                                    <Label Text="You are logged in as:" FontFamily="Kokila Bold" FontSize="13" StyleId="Kokila Bold" TextColor="White"></Label>
+                                    <Label x:Name="loggedUserName" FontFamily="Kokila Bold" FontSize="13"  StyleId="Kokila Bold" FontAttributes="Bold" TextColor="White"></Label>
+                                </StackLayout>
+
+                                <Label HorizontalTextAlignment="Start" Text="Remember to register your coffee purchase." FontSize="13" FontFamily="Kokila Bold"  StyleId="Kokila Bold" TextColor="White"></Label>
+
+                                <StackLayout  Orientation="Horizontal" Spacing="0" Padding="0">
+                                    <Label Text="You got registered on:" FontFamily="Kokila Bold" FontSize="13" StyleId="Kokila Bold" TextColor="White"></Label>
+                                    <Label x:Name="registeredOnWhichDate" HorizontalTextAlignment="Center" Text=" 29-02-2018" FontFamily="Kokila Bold" FontSize="13" StyleId="Kokila Bold" FontAttributes="Bold" TextColor="White"></Label>
+                                </StackLayout>
+
+                                <StackLayout x:Name="freeCupVisiblityText" IsVisible="False" Orientation="Horizontal" Spacing="0" Padding="0">
+                                    <Label Text="Your next coffee will be" FontFamily="Kokila Bold" FontSize="16" StyleId="Kokila Bold" TextColor="White"></Label>
+                                    <Label Text=" FREE" FontFamily="Kokila Bold"  StyleId="Kokila Bold" FontSize="18" FontAttributes="Bold" TextColor="White"></Label>
+                                </StackLayout>
+
+                            </StackLayout>
+
+                        </Grid>
+
+
+        <StackLayout Margin="0,5,0,0" Padding="5" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="5">
+                        <Image x:Name="firstCup" Source="{Binding FirstCup}" HeightRequest="25" WidthRequest="25"></Image>
+                        <Image x:Name="secondCup" Source="{Binding SecondCup}" HeightRequest="25" WidthRequest="25"></Image>
+                        <Image x:Name="thirdCup" Source="{Binding ThirdCup}" HeightRequest="25" WidthRequest="25"></Image>
+                        <Image x:Name="fourthCup" Source="{Binding FourthCup}" HeightRequest="25" WidthRequest="25"></Image>
+                        <Image x:Name="fivthCup"  Source="{Binding FivthCup}" HeightRequest="25" WidthRequest="25"></Image>
+                        <Image x:Name="sixthCup" Source="{Binding SixthCup}" HeightRequest="25" WidthRequest="25"></Image>
+                        <Image x:Name="seventhCup" Source="{Binding SeventhCup}" HeightRequest="25" WidthRequest="25"></Image>
+                        <Image x:Name="eightCup" Source="{Binding EightCup}" HeightRequest="25" WidthRequest="25"></Image>
+                        <Image x:Name="ninethCup" Source="{Binding NinethCup}"  HeightRequest="25" WidthRequest="25"></Image>
+                        <Image x:Name="tenthCup"   Source="{Binding TenthCup}" HeightRequest="25" WidthRequest="25"></Image>
+                </StackLayout>
+      </StackLayout>
+
+     
+
+      <StackLayout Spacing="10">
+        <Grid ColumnSpacing="10" Padding="15" BackgroundColor="White">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+          </Grid.RowDefinitions>
+          <Image Source="ic_coffee.png" Aspect="AspectFit" Grid.Row="0" Grid.Column="0"></Image>
+          <Label Text="MENU" FontFamily="Kokila Bold"  StyleId="Kokila Bold" VerticalTextAlignment="Center" TextColor="#543816" FontSize="25" FontAttributes="Bold" Grid.Row="0" Grid.Column="1"></Label>
+          <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Menu_Tapped">
+
+            </TapGestureRecognizer>
+          </Grid.GestureRecognizers>
+        </Grid>
+
+        <Grid ColumnSpacing="10" Padding="15" BackgroundColor="White">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+          </Grid.RowDefinitions>
+          <Image Source="ic_event.png" Aspect="AspectFit" Grid.Row="0" Grid.Column="0"></Image>
+          <Label Text="EVENTS" FontSize="25" FontFamily="Kokila Bold"  StyleId="Kokila Bold" VerticalTextAlignment="Center" TextColor="#543816" FontAttributes="Bold" Grid.Row="0" Grid.Column="1"></Label>
+                        <local:CustomButton x:Name="eventButton"  BackgroundColor="#00AFEF" FontFamily="Kokila Bold"  StyleId="Kokila Bold"  FontSize="30" TextColor="White" FontAttributes="Bold" BorderRadius="120" BorderColor="Transparent" BorderWidth="1" Grid.Row="0" Grid.Column="2"/>
+          <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Events_Tapped">
+
+            </TapGestureRecognizer>
+          </Grid.GestureRecognizers>
+        </Grid>
+
+        <Grid ColumnSpacing="10" Padding="15" BackgroundColor="White">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+          </Grid.RowDefinitions>
+          <Image Source="ic_news.png" Aspect="AspectFit" Grid.Row="0" Grid.Column="0"></Image>
+          <Label Text="NEWS" FontSize="25" FontFamily="Kokila Bold"  StyleId="Kokila Bold" VerticalTextAlignment="Center" TextColor="#543816" FontAttributes="Bold" Grid.Row="0" Grid.Column="1"></Label>
+                        <local:CustomButton x:Name="newsButton" BackgroundColor="#00AFEF" FontFamily="Kokila Bold"  StyleId="Kokila Bold" HeightRequest="30"  FontSize="30" TextColor="White" FontAttributes="Bold" BorderRadius="120" BorderColor="Transparent" BorderWidth="1" Grid.Row="0" Grid.Column="2"/>
+          <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="News_Tapped">
+
+            </TapGestureRecognizer>
+          </Grid.GestureRecognizers>
+        </Grid>
+      </StackLayout>
+
+      <Grid ColumnSpacing="12" Padding="0,10,0,0" VerticalOptions="End">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"></ColumnDefinition>
+          <ColumnDefinition Width="40"></ColumnDefinition>
+          <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackLayout HorizontalOptions="Start" Grid.Row="0" Grid.Column="0" Spacing="2" Orientation="Horizontal" Padding="0">
+          <Label HorizontalOptions="Center" x:Name="FbText" Text="Like Us On Facebook" FontSize="13" VerticalTextAlignment="Center" VerticalOptions="Center" HorizontalTextAlignment="Start" FontFamily="Kokila Bold"  StyleId="Kokila Bold" TextColor="#395D96" FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                
+                             Tapped="FbText_Clicked"
+                                NumberOfTapsRequired="1" />
+
+                        </Label.GestureRecognizers>
+
+                    </Label>
+                        
+          <Image HorizontalOptions="Start" Source="ic_facebook.png" HeightRequest="25" WidthRequest="25"></Image>
+        </StackLayout>
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="1">
+        <Image Source="ic_forword.png"  VerticalOptions="Center" Grid.Row="0" Grid.Column="1" HeightRequest="25" WidthRequest="25">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="map_Tapped">
+
+                        </TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                        <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="map_Tapped">
+
+                        </TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                        </StackLayout>
+        <StackLayout HorizontalOptions="End" Grid.Row="0" Grid.Column="2" Spacing="2" Orientation="Horizontal" Padding="0">
+          <Image HorizontalOptions="End" Source="ic_instagram.png" HeightRequest="25" WidthRequest="25" VerticalOptions="Center">
+
+                      
+
+
+                    </Image>
+          <Label HorizontalOptions="End" x:Name="InstragramTxt" Text="See Us On Instragram" FontSize="13" VerticalTextAlignment="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" FontFamily="Kokila Bold"  StyleId="Kokila Bold" TextColor="#D78251" FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                
+                             Tapped="InstragramTxt_Clicked"
+                                NumberOfTapsRequired="1" />
+
+                        </Label.GestureRecognizers>
+
+                    </Label>
+        </StackLayout>
+      </Grid>
+    </StackLayout>
+  </ScrollView>
+
+    </controls:PullToRefreshLayout>
+</ContentPage>
