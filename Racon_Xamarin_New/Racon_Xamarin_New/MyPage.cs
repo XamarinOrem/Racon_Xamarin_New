@@ -26,8 +26,8 @@ namespace Racon_Xamarin_New
                 Url = ""
             };
 
-            customMap.CustomPins = new List<CustomPinNew> { pin };
-            customMap.Pins.Add(pin);
+            //customMap.CustomPins = new List<CustomPinNew> { pin };
+            //customMap.Pins.Add(pin);
             customMap.MoveToRegion(MapSpan.FromCenterAndRadius(
                 new Position(Latitude, Longitude), Distance.FromMiles(1.0)));
 
